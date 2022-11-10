@@ -7,8 +7,8 @@ def openConnection(_dbFile):
     try:
         conn = sqlite3.connect(_dbFile)
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
     print("++++++++++++++++++++++++++++++++++")
     return conn
 
@@ -20,8 +20,8 @@ def closeConnection(_conn, _dbFile):
     try:
         _conn.close()
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
     print("++++++++++++++++++++++++++++++++++")
 
 ####################################################################
@@ -29,21 +29,13 @@ def closeConnection(_conn, _dbFile):
 
 def deleteContent(_conn):
     cursor = _conn.cursor()
-    print("Deleting content from cseatures_local...")
-    try:
-        cursor.execute(f'''DELETE FROM cseatures_local''')
-        print("Done!")
-    except Error as e:
-        print(e)
-
-    print("----")
 
     print("Deleting content from cseatures_master...")
     try:
         cursor.execute(f'''DELETE FROM cseatures_master''')
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
 
     print("----")
 
@@ -51,8 +43,8 @@ def deleteContent(_conn):
     try:
         cursor.execute(f'''DELETE FROM data''')
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
 
     print("----")
     
@@ -60,8 +52,8 @@ def deleteContent(_conn):
     try:
         cursor.execute(f'''DELETE FROM favorites''')
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
 
     print("----")
 
@@ -69,8 +61,8 @@ def deleteContent(_conn):
     try:
         cursor.execute(f'''DELETE FROM inventory''')
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
     
     print("----")
 
@@ -78,8 +70,8 @@ def deleteContent(_conn):
     try:
         cursor.execute(f'''DELETE FROM login''')
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
 
     print("----")
 
@@ -87,8 +79,8 @@ def deleteContent(_conn):
     try:
         cursor.execute(f'''DELETE FROM player''')
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
     print("++++++++++++++++++++++++++++++++++")
 
 ####################################################################
@@ -96,6 +88,7 @@ def deleteContent(_conn):
 
 def addContent(_conn):
     cursor = _conn.cursor()
+    
     print("Adding sample data to login...")
     try:
         cursor.execute('''
@@ -108,8 +101,8 @@ def addContent(_conn):
             ('5', 'ucmITofficial', 'rufusluvr90210')
             ''')
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
     print("----")
 
     print("Adding sample data to data...")
@@ -125,8 +118,8 @@ def addContent(_conn):
             ('5', '50')
             ''')
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
     print("----")
 
     print("Adding sample data to player...")
@@ -139,13 +132,45 @@ def addContent(_conn):
             ('20', '250', 'StarKiller1337', 'NA'),
             ('30', '10', 'TeaTimeGTG', 'EU'),
             ('40', '25', 'GoogleDotCom', 'AF'),
-            ('50', '99999999999999999999', ucmITofficial, NA)
+            ('50', '999999999999', 'ucmITofficial', 'NA')
             ''')
         print("Done!")
-    except Error as e:
-        print(e)
+    except Error as error:
+        print(error)
     print("----")
 
+    print("Adding sample data to inventory...")
+    try:
+        cursor.execute('''
+            INSERT INTO inventory (i_saveID, i_ownedIDs)
+            VALUES
+            ('10', '015|021|033|043|051|061|081|092|101|124|132|141|152'),
+            ('11', ''),
+            ('20', '041|072|101|151'),
+            ('30', '031|111|121'),
+            ('40', '081'),
+            ('50', '015|025|035|045|055|065|075|085|095|105|115|125|135|145|155')
+            ''')
+        print("Done!")
+    except Error as error:
+        print(error)
+    print("----")
+
+    print("Adding sample data to favorites...")
+    try:
+        cursor.execute('''
+            INSERT INTO favorites (f_saveID, f_favoriteIDs)
+            VALUES
+            ('10', '015|124'),
+            ('11', ''),
+            ('20', '072'),
+            ('30', '031|111|121'),
+            ('40', ''),
+            ('50', '015|025|035')
+            ''')
+        print("Done!")
+    except Error as error:
+        print(error)
     print("++++++++++++++++++++++++++++++++++")
 
 def Q1(_conn):
