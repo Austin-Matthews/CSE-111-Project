@@ -88,7 +88,33 @@ def deleteContent(_conn):
 
 def addContent(_conn):
     cursor = _conn.cursor()
-    
+
+    print("Adding sample data to cseatures_master...")
+    try:
+        cursor.execute('''
+            INSERT INTO cseatures_master (cm_id, cm_name, cm_rarity, cm_value, cm_rate)
+            VALUES
+            ('01', 'Angelo Kyrilov', 'Common', '10', '0.17'),
+            ('02', 'Santosh Chandrasekhar', 'Common', '10', '0.17'),
+            ('03', 'Pengfei Su', 'Common', '10', '0.17'),
+            ('04', 'Shawn Newsam', 'Common', '10', '0.17'),
+            ('05', 'Florin Rusu', 'Common', '10', '0.17'),
+            ('06', 'Judge Kyrilov', 'Rare', '350', '0.022'),
+            ('07', 'Santosh Claus', 'Rare', '350', '0.022'),
+            ('08', 'Pengfei Soup', 'Rare', '350', '0.022'),
+            ('09', 'Shawn Oldsam', 'Rare', '350', '0.022'),
+            ('10', 'Floral Rusu', 'Rare', '350', '0.022'),
+            ('11', 'Angelo, The Last', 'Legendary', '350', '0.004'),
+            ('12', 'Punished Venom Santosh', 'Legendary', '20000', '0.008'),
+            ('13', 'Pengflame Su', 'Legendary', '20000', '0.008'),
+            ('14', 'Shawrannosaurus Rex', 'Legendary', '20000', '0.008'),
+            ('15', 'R.U.S.U 9000', 'Legendary', '20000', '0.008')
+            ''')
+        print("Done!")
+    except Error as error:
+        print(error)
+    print("----")
+
     print("Adding sample data to login...")
     try:
         cursor.execute('''
